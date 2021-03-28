@@ -6,6 +6,7 @@ body {
 }
 
 header a {
+    margin-left: 10px;
     font-size: 30px;
     text-decoration: none;
     color: purple;
@@ -14,17 +15,27 @@ header a {
 #currentTime {
     float: right;
     font-weight: bolder;
+    font-size: 25px;
+    margin-right: 10px;
 }
-
-.gamewrap {
-    color: white;
+.gameWrap {
     text-align: center;
     justify-content: center;
-    background: purple;
+    background: white;
     margin: 120px;
+}
+.questions {
+    margin: 10px;
 }
 
 #startButton {
     background: turquoise;
     color:purple;
+}
+li {
+    color: white;
+    text-align: center;
+    justify-content: center;
+    background: purple;
+    margin: 20px;
 }
