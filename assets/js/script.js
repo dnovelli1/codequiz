@@ -50,6 +50,8 @@ var current = document.getElementById("currentTime");
 var interval;
 var timer = 75;
 var index = 0;
+var score = 0;
+var incorrect = 10;
 // Created a function for the timer to countdown by 1 and stopping at 0.
 // Worked with a tutor for this.
 function start(){
@@ -86,9 +88,19 @@ function showQuestions() {
  
     // Create question and buttons using for loop for answers.
     // While making buttons give them an onclick of running checkQuestion.
-function checkQuestion(){
+function checkQuestion(userChose){
     var correct = questions[index].answer;
-    // check if the choice is the correct answer for this question.
+    var determined = document.createElement("div");
+    determined.setAttribute("id", "determined", "color", "green");
+    // check if the choice is the correct answer for this question. Displaying correct in green below.
+    var element = userChose.target;
+        if(element == correct){
+            score++;
+            determined.textContent = "Correct!";
+        } else {
+            
+        }
+    
     // subtract 10 and show incorrect if wrong otherwise show correct.
     // index++ then showQuestion() (will need if statements to make sure you dont go over questions.length)
 }
