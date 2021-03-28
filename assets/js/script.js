@@ -44,6 +44,8 @@ var questions = [
 
 ];
 
+var choicesList = document.querySelector(".userChoices");
+var questionAsked = document.querySelector(".questions");
 var current = document.getElementById("currentTime");
 var interval;
 var timer = 75;
@@ -51,25 +53,39 @@ var index = 0;
 // Created a function for the timer to countdown by 1 and stopping at 0.
 // Worked with a tutor for this.
 function start(){
-    current.textContent = timer;
+    current.textContent = "Timer: " + timer;
     interval = setInterval(() => {
         timer--;
-        current.textContent = timer;
+        current.textContent = "Timer: " + timer;
         if(timer <= 0) {
             clearInterval(interval);
             current.textContent = 0;
         }
     }, 1000);
     // function
-    showquestions();
+    showQuestions();
 }
 
 function showQuestions() {
     var question = questions[index];
+    questionAsked.innerHTML = "";
+    choicesList.innerHTML = "";
+    for(i = 0; i < questions.length; i++) {
+        var userQuestion = question.ask;
+        var userOptions = question.choice;
+        questionAsked.textContent = userQuestion;
+    }
+    userOptions.forEach(function (listMade){
+        var liCreate = document.createElement("li");
+        liCreate.textContent = listMade;
+        questionAsked.appendChild(choicesList);
+        choicesList.appendChild(liCreate);
+        liCreate.addEventListener("click", checkQuestion);
+    })  
+    };
+ 
     // Create question and buttons using for loop for answers.
     // While making buttons give them an onclick of running checkQuestion.
-}
-
 function checkQuestion(){
     var correct = questions[index].answer;
     // check if the choice is the correct answer for this question.
