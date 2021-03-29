@@ -62,6 +62,10 @@ function start(){
         if(timer <= 0) {
             clearInterval(interval);
             current.textContent = 0;
+            endGame();
+        } else if(questions[index] >= questions.length) {
+            clearInterval(interval);
+            endGame();
         }
     }, 1000);
     // function
@@ -72,42 +76,42 @@ function start(){
 function checkQuestion(userChose){
     var element = userChose.target.getAttribute("data-name");
     var correct = questions[index].answer;
-    // check if the choice is the correct answer for this question. Displaying correct in green below.
+    // check if the choice is the correct answer for this question. 
     var determined = document.createElement("div");
     determined.setAttribute("id", "determined");
         if(element == correct){
-            determined.textContent = "Correct!";
+            ++score;
+            nextQuestion();
         } else {
             timer = timer - incorrect;
-            determined.textContent = "Incorrect! Subtracted 10 seconds!";
+            nextQuestion();
         }
-        nextQuestion();
-
 }
 
-        
-// subtract 10 and show incorrect if wrong otherwise show correct.
 // index++ then showQuestion() (will need if statements to make sure you dont go over questions.length)
 function showQuestions(question) {
     var question = questions[index];
     questionAsked.innerHTML = "";
     choicesList.innerHTML = "";
-    for(i = 0; i < questions.length; i++) {
-        var userQuestion = question.ask;
-        var userOptions = question.choice;
-        questionAsked.textContent = userQuestion;
-    }
-    userOptions.forEach(function (listMade){
-        var liCreate = document.createElement("li");
-        liCreate.setAttribute("data-name", listMade);
-        liCreate.textContent = listMade;
-        questionAsked.appendChild(choicesList);
-        choicesList.appendChild(liCreate);
+    console.log(index);
+    if(index === questions.length) {
+        clearInterval(interval);
+        endGame();
+    }else {
+        for(i = 0; i < questions.length; i++) {
+            var userQuestion = question.ask;
+            var userOptions = question.choice;
+            questionAsked.textContent = userQuestion;
+        }
+        userOptions.forEach(function (listMade){
+            var liCreate = document.createElement("li");
+            liCreate.setAttribute("data-name", listMade);
+            liCreate.textContent = listMade;
+            questionAsked.appendChild(choicesList);
+            choicesList.appendChild(liCreate);
         liCreate.addEventListener("click", checkQuestion);
-    })  
-    if(question >= questions.length){
-        // make finished screen with function
-    }
+        })}
+    
 }
 // This will trigger moving to the next
 function nextQuestion() {
@@ -116,6 +120,14 @@ function nextQuestion() {
 }
 
 function endGame() {
-    
+    questionAsked.innerHTML = "";
+    choicesList.innerHTML = "";
+
+    var endTitle = document.createElement('h1');
+    endTitle.textContent = "Game is Over";
+    questionAsked.appendChild(endTitle);
+    var numberRight = document.createElement('h3');
+    numberRight.textContent = "You answered " + score + " questions correctly!";
+    questionAsked.appendChild(numberRight);
 }
 document.getElementById("startButton").addEventListener("click", start);
