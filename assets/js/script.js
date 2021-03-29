@@ -65,10 +65,30 @@ function start(){
         }
     }, 1000);
     // function
-    showQuestions();
+    showQuestions(index);
+}
+// Create question and buttons using for loop for answers.
+// While making buttons give them an onclick of running checkQuestion.
+function checkQuestion(userChose){
+    var element = userChose.target.getAttribute("data-name");
+    var correct = questions[index].answer;
+    // check if the choice is the correct answer for this question. Displaying correct in green below.
+    var determined = document.createElement("div");
+    determined.setAttribute("id", "determined");
+        if(element == correct){
+            determined.textContent = "Correct!";
+        } else {
+            timer = timer - incorrect;
+            determined.textContent = "Incorrect! Subtracted 10 seconds!";
+        }
+        nextQuestion();
+
 }
 
-function showQuestions() {
+        
+// subtract 10 and show incorrect if wrong otherwise show correct.
+// index++ then showQuestion() (will need if statements to make sure you dont go over questions.length)
+function showQuestions(question) {
     var question = questions[index];
     questionAsked.innerHTML = "";
     choicesList.innerHTML = "";
@@ -79,29 +99,23 @@ function showQuestions() {
     }
     userOptions.forEach(function (listMade){
         var liCreate = document.createElement("li");
+        liCreate.setAttribute("data-name", listMade);
         liCreate.textContent = listMade;
         questionAsked.appendChild(choicesList);
         choicesList.appendChild(liCreate);
         liCreate.addEventListener("click", checkQuestion);
     })  
-    };
- 
-    // Create question and buttons using for loop for answers.
-    // While making buttons give them an onclick of running checkQuestion.
-function checkQuestion(userChose){
-    var correct = questions[index].answer;
-    var determined = document.createElement("div");
-    determined.setAttribute("id", "determined", "color", "green");
-    // check if the choice is the correct answer for this question. Displaying correct in green below.
-    var element = userChose.target;
-        if(element == correct){
-            score++;
-            determined.textContent = "Correct!";
-        } else {
-            
-        }
+    if(question >= questions.length){
+        // make finished screen with function
+    }
+}
+// This will trigger moving to the next
+function nextQuestion() {
+    index++;
+    showQuestions();
+}
+
+function endGame() {
     
-    // subtract 10 and show incorrect if wrong otherwise show correct.
-    // index++ then showQuestion() (will need if statements to make sure you dont go over questions.length)
 }
 document.getElementById("startButton").addEventListener("click", start);
