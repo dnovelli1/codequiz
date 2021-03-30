@@ -26,7 +26,7 @@
 
 
 ## How it was made! 
-``Javascript
+Javascript
 
 
 ![Code-Snippet](assets/images/javascriptsnippet.PNG)
