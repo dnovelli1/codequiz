@@ -166,8 +166,6 @@ function endGame() {
                 initials: initials,
                 score: timer
             }
-            console.log(finalScore);
-
         }
     })
 }
