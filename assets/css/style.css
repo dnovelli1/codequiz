@@ -67,3 +67,20 @@ li:hover {
     font-weight: bold;
     text-align: center;
 }
+
+#highScore {
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+#goBack {
+    background-color: purple;
+    color: white;
+    border-color: black;
+}
+
+#clear {
+    background-color: purple;
+    color: white;
+    border-color: black;
+}
