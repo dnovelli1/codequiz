@@ -82,8 +82,10 @@ function checkQuestion(userChose){
         if(element == correct){
             ++score;
             nextQuestion();
+            determined.textContent = "Correct!";
         } else {
             timer = timer - incorrect;
+            determined.textContent = "Wrong!";
             nextQuestion();
         }
 }
@@ -93,7 +95,6 @@ function showQuestions(question) {
     var question = questions[index];
     questionAsked.innerHTML = "";
     choicesList.innerHTML = "";
-    console.log(index);
     if(index === questions.length) {
         clearInterval(interval);
         endGame();
@@ -104,14 +105,14 @@ function showQuestions(question) {
             questionAsked.textContent = userQuestion;
         }
         userOptions.forEach(function (listMade){
-            var liCreate = document.createElement("li");
+            var liCreate = document.createElement("button");
+            liCreate.setAttribute("class", "answerButton");
             liCreate.setAttribute("data-name", listMade);
             liCreate.textContent = listMade;
             questionAsked.appendChild(choicesList);
             choicesList.appendChild(liCreate);
         liCreate.addEventListener("click", checkQuestion);
         })}
-    
 }
 // This will trigger moving to the next
 function nextQuestion() {
@@ -122,12 +123,32 @@ function nextQuestion() {
 function endGame() {
     questionAsked.innerHTML = "";
     choicesList.innerHTML = "";
+    current.textContent = "";
 
-    var endTitle = document.createElement('h1');
+    var endTitle = document.createElement("h1");
     endTitle.textContent = "Game is Over";
     questionAsked.appendChild(endTitle);
-    var numberRight = document.createElement('h3');
+    
+    var numberRight = document.createElement("h3");
     numberRight.textContent = "You answered " + score + " questions correctly!";
     questionAsked.appendChild(numberRight);
+
+    var endingScore = document.createElement("p");
+    endingScore.textContent = "Score: " + timer;
+    endingScore.setAttribute("class", "endingScore");
+    questionAsked.appendChild(endingScore);
+
+    var initialInput = document.createElement("input");
+    initialInput.setAttribute("type", "text");
+    initialInput.setAttribute("name", "Initials");
+    initialInput.setAttribute("placeholder", "Enter your initals here");
+    questionAsked.appendChild(initialInput);
+    
+    var submitBtn = document.createElement("button");
+    submitBtn.textContent = "Submit!";
+    submitBtn.setAttribute("type", "submit",);
+    submitBtn.setAttribute("value", "Submit");
+    submitBtn.setAttribute("class", "submitBtn");
+    questionAsked.appendChild(submitBtn);
 }
 document.getElementById("startButton").addEventListener("click", start);
