@@ -22,5 +22,5 @@
 
 ## Site Preview
 
-![Site](assets/images/codequizsneakpeek.png)
+![Site](assets/images/codequizsneakpeek.PNG)
 
