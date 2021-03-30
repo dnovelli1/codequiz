@@ -32,9 +32,9 @@ header a {
 }
 
 #startButton {
-    background: turquoise;
-    color:purple;
-    
+    background-color: purple;
+    color: white;
+    border-color: black;
 }
 
 .userChoices {
