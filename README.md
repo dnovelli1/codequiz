@@ -24,3 +24,10 @@
 
 ![Site](assets/images/codequizsneakpeek.PNG)
 
+
+## How it was made! 
+``Javascript
+
+
+![Code-Snippet](assets/images/javascriptsnippet.PNG)
+
