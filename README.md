@@ -25,6 +25,9 @@
 ![Site](assets/images/codequizsneakpeek.PNG)
 
 
+![HighscorePage](assets/images/highscoresneekpeak.PNG)
+
+
 ## How it was made! 
 Javascript
 
