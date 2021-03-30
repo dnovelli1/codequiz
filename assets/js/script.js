@@ -81,13 +81,15 @@ function checkQuestion(userChose){
     determined.setAttribute("id", "determined");
         if(element == correct){
             ++score;
-            nextQuestion();
             determined.textContent = "Correct!";
+            nextQuestion();
+            
         } else {
             timer = timer - incorrect;
             determined.textContent = "Wrong!";
             nextQuestion();
         }
+        choicesList.appendChild(determined);
 }
 
 // index++ then showQuestion() (will need if statements to make sure you dont go over questions.length)
@@ -105,7 +107,7 @@ function showQuestions(question) {
             questionAsked.textContent = userQuestion;
         }
         userOptions.forEach(function (listMade){
-            var liCreate = document.createElement("button");
+            var liCreate = document.createElement("li");
             liCreate.setAttribute("class", "answerButton");
             liCreate.setAttribute("data-name", listMade);
             liCreate.textContent = listMade;
@@ -150,5 +152,23 @@ function endGame() {
     submitBtn.setAttribute("value", "Submit");
     submitBtn.setAttribute("class", "submitBtn");
     questionAsked.appendChild(submitBtn);
+
+    submitBtn.addEventListener("click", function () {
+        var initials = initialInput.value;
+
+        if (initials === "") {
+             alert("You must enter your initials.");
+             return;
+        } else {
+            questionAsked.innerHTML = "";
+            choicesList.innerHTML = "";
+            var finalScore = {
+                initials: initials,
+                score: timer
+            }
+            console.log(finalScore);
+
+        }
+    })
 }
 document.getElementById("startButton").addEventListener("click", start);
