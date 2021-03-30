@@ -19,6 +19,7 @@ header a {
     margin-right: 10px;
 }
 .gameWrap {
+    border: solid;
     text-align: center;
     justify-content: center;
     background: white;
@@ -26,16 +27,43 @@ header a {
 }
 .questions {
     margin: 10px;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 #startButton {
     background: turquoise;
     color:purple;
+    
+}
+
+.userChoices {
+    padding-left: 30%;
+    padding-right: 30%;
 }
 li {
+    list-style-type: none;
+    background:purple;
+    margin-bottom: 10px;
+    border-radius: 10px;
     color: white;
+
+}
+
+li:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px lightseagreen;
+    color: lightseagreen;
+}
+
+.submitBtn {
+    background-color: purple;
+    color: white;
+    border-color: black;
+}
+
+.endingScore {
+    font-size: 20px;
+    font-weight: bold;
     text-align: center;
-    justify-content: center;
-    background: purple;
-    margin: 20px;
 }
