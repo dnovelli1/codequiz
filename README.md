@@ -25,7 +25,7 @@
 ![Site](assets/images/codequizsneakpeek.PNG)
 
 
-![HighscorePage](assets/images/highscoresneekpeak.PNG)
+![HighscorePage](assets/images/highscoresneakpeak.PNG)
 
 
 ## How it was made! 
