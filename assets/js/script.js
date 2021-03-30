@@ -38,7 +38,7 @@ var questions = [
     },
     {
         ask: "String values must be closed within _____ when being assigned to variabels.",
-        choice: ["Curly Brackets", "Commas", "Quotes", "Parenthesis"],
+        choice: ["Curly Brackets", "Quotes", "Commas", "Parenthesis"],
         answer: "Quotes"
     }
 
@@ -140,6 +140,10 @@ function endGame() {
     endingScore.setAttribute("class", "endingScore");
     questionAsked.appendChild(endingScore);
 
+    var initialLabel = document.createElement("label");
+    initialLabel.textContent = "Initials here: ";
+    questionAsked.appendChild(initialLabel);
+
     var initialInput = document.createElement("input");
     initialInput.setAttribute("type", "text");
     initialInput.setAttribute("name", "Initials");
@@ -160,12 +164,21 @@ function endGame() {
              alert("You must enter your initials.");
              return;
         } else {
-            questionAsked.innerHTML = "";
-            choicesList.innerHTML = "";
             var finalScore = {
                 initials: initials,
                 score: timer
             }
+            console.log(finalScore);
+            var allScores = localStorage.getItem("allScores");
+            if (allScores === null) {
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore)
+            window.location.replace("./highscores.html");
         }
     })
 }
