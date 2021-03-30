@@ -22,7 +22,7 @@
 
 ## Site Preview
 
-![Site](assets/images/codequizsneakpeek.PNG)
+![Site](assets/images/codequizsneakpeek2.PNG)
 
 
 ![HighscorePage](assets/images/highscoresneakpeek.PNG)
